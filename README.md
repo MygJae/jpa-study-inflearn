@@ -1,1 +1,1 @@
-# jpa-study-inflearn
+# 김영한님 인프런 JPA강의
