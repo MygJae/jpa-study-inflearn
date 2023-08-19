@@ -2,13 +2,14 @@ package jpabook.jpashop.service;
 
 import jpabook.jpashop.domain.Member;
 import jpabook.jpashop.repository.MemberRepository;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 
 //@ExtendWith(SpringExtension.class)
 @SpringBootTest
@@ -33,7 +34,7 @@ class MemberServiceTest {
     }
 
     @Test
-    public void 중복_회원_예외() throws Exception {
+    public void 중복_회원_예외() {
         //given
         Member member1 = new Member();
         member1.setName("kim");
@@ -43,9 +44,11 @@ class MemberServiceTest {
 
         //when
         memberService.join(member1);
+        assertThrows(IllegalStateException.class, () -> memberService.join(member2));
 
         //then
-        Assertions.assertThrows(IllegalStateException.class, () -> memberService.join(member2));
+
+
 
     }
 }

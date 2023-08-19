@@ -38,4 +38,14 @@ public class Order {
 
     @Enumerated(EnumType.STRING)
     private OrderStatus status; //주문상태 (ORDER, CANCEL)
+
+    //연관관계 메서드
+
+
+    //비즈니스 로직
+    //주문 취소
+
+    //조회 로직
+    //전체 주문 가격 조회
+
 }
